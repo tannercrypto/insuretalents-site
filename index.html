@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InsureTalents — Insurance Recruiting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0B1F3A;
+      --navy-mid: #142d52;
+      --gold: #C9A84C;
+      --gold-light: #E4C97B;
+      --cream: #F7F4EE;
+      --cream-dark: #EDE8DF;
+      --text: #0B1F3A;
+      --text-muted: #4A5568;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(11, 31, 58, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* PAGE SECTIONS */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 4rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.12);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+    .hero-inner {
+      max-width: 720px;
+      animation: fadeUp 0.9s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.75rem;
+      font-weight: 300;
+    }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: transparent;
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--cream-dark);
+      border-bottom: 1px solid rgba(11,31,58,0.1);
+      padding: 2.5rem 4rem;
+      display: flex;
+      gap: 0;
+    }
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 0 2rem;
+      border-right: 1px solid rgba(11,31,58,0.12);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-num span { color: var(--gold); }
+    .stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* SERVICES */
+    .section {
+      padding: 7rem 4rem;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 540px;
+      font-weight: 300;
+      margin-bottom: 3.5rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: rgba(11,31,58,0.1);
+      border: 1.5px solid rgba(11,31,58,0.1);
+    }
+    .service-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: var(--white); }
+    .service-icon {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 1.75rem;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ABOUT PAGE */
+    .about-hero {
+      min-height: 55vh;
+      background: var(--navy);
+      display: flex;
+      align-items: flex-end;
+      padding: 6rem 4rem 4rem;
+    }
+    .about-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .about-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .about-body {
+      padding: 6rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    .about-body p {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(11,31,58,0.1);
+      border: 1px solid rgba(11,31,58,0.1);
+    }
+    .pillar {
+      background: var(--cream);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 28px;
+    }
+    .pillar-text h4 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .pillar-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* CONTACT PAGE */
+    .contact-hero {
+      min-height: 45vh;
+      background: var(--navy);
+      display: flex;
+      align-items: flex-end;
+      padding: 6rem 4rem 4rem;
+    }
+    .contact-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .contact-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .contact-body {
+      padding: 6rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .contact-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .contact-detail-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .contact-detail-value {
+      font-size: 0.97rem;
+      color: var(--navy);
+      font-weight: 400;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-group label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid rgba(11,31,58,0.15);
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+      border-radius: 0;
+    }
+    .form-submit:hover { background: var(--navy-mid); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+    }
+    .footer-email {
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .footer-email:hover { color: var(--gold-light); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .stats-bar { flex-direction: column; padding: 2rem 1.5rem; gap: 1.5rem; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.12); padding: 0 0 1.5rem; }
+      .stat:last-child { border-bottom: none; padding-bottom: 0; }
+      .section { padding: 4rem 1.5rem; }
+      .about-hero, .contact-hero { padding: 5rem 1.5rem 3rem; }
+      .about-body, .contact-body { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" onclick="showPage('home')">Insure<span>Talents</span></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('about')">About</a></li>
+      <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Boutique Insurance Recruiting</p>
+        <h1>The right talent<br>for <em>your</em> agency.</h1>
+        <p class="hero-sub">InsureTalents specializes in placing top-tier insurance professionals — from independent agents to commercial producers — with firms built for growth.</p>
+        <div class="btn-group">
+          <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
+          <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-num">$400<span>K+</span></div>
+        <div class="stat-label">Agency Revenue Placed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Years Recruiting Insurance</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">RVPs Placed in 6 Months</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">P<span>&</span>C</div>
+        <div class="stat-label">Commercial & Personal Lines</div>
+      </div>
+    </div>
+
+    <section class="section">
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-title">Specialized recruiting<br>for insurance firms.</h2>
+      <p class="section-sub">We don't do generalist staffing. Every search we run is insurance-specific — built on deep industry relationships and a refined eye for talent.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Agent Recruitment</h3>
+          <p>We identify and recruit experienced captive and independent P&C agents ready to make their next move — including transitions from State Farm, Allstate, Farmers, and American Family.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Commercial Producer Search</h3>
+          <p>We source commercial lines producers from top brokerages including USI, Gallagher, HUB, and Lockton — professionals with proven books and real market relationships.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Executive Placement</h3>
+          <p>From Regional Vice Presidents to agency principals, we've placed senior insurance leaders across the country. Discreet, thorough, and results-driven.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Agency Growth Consulting</h3>
+          <p>Beyond the hire — we advise growing agencies on recruiting strategy, compensation structures, and how to attract top talent in a competitive market.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="page">
+    <div class="about-hero">
+      <h1>Built by someone<br>who knows <em>insurance.</em></h1>
+    </div>
+    <div class="about-body">
+      <div>
+        <h2>We speak the language of the industry.</h2>
+        <p>InsureTalents was founded by an insurance recruiting professional with over 5 years of full-cycle experience across agency, corporate, and boutique environments. We've worked inside the industry — not just around it.</p>
+        <p>Our background spans captive agent transitions, commercial lines producer recruitment, employee benefits staffing, and senior executive search. We understand the difference between a good resume and a great producer.</p>
+        <p>We serve independent agencies, regional carriers, and national brokerages who are serious about building teams that perform — not just filling seats.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-text">
+            <h4>Industry-First</h4>
+            <p>Every search is led by a recruiter with real insurance knowledge — not a generalist learning on the fly.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-text">
+            <h4>Boutique Attention</h4>
+            <p>We take on a limited number of searches at a time so every client gets our full focus and network.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-text">
+            <h4>Nationwide Reach</h4>
+            <p>Active recruiting presence across TX, WA, OH, IL, AZ, and beyond — with a national candidate network.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div class="pillar-text">
+            <h4>Results-Driven</h4>
+            <p>We're measured by placements that stick — not activity metrics. Quality over quantity, every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="page-contact" class="page">
+    <div class="contact-hero">
+      <h1>Let's find your<br><em>next hire.</em></h1>
+    </div>
+    <div class="contact-body">
+      <div class="contact-info">
+        <h2>Start the conversation.</h2>
+        <p>Whether you're an agency ready to grow your team or an insurance professional exploring your next opportunity — we'd like to hear from you.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <span class="contact-detail-label">Email</span>
+            <span class="contact-detail-value">tanner@insuretalents.com</span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-detail-label">Website</span>
+            <span class="contact-detail-value">insuretalents.com</span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-detail-label">Specialties</span>
+            <span class="contact-detail-value">P&C · Commercial Lines · Agent Recruitment · Executive Search</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Tanner" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>I am a...</label>
+          <select>
+            <option value="">Select one</option>
+            <option>Agency / Employer looking to hire</option>
+            <option>Insurance professional exploring opportunities</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your situation — we'll respond within one business day."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <div id="form-success" style="display:none; font-size:0.88rem; color: #1D9E75; font-weight:400;">Message sent — we'll be in touch shortly.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Insure<span>Talents</span></div>
+    <span class="footer-copy">&copy; 2026 InsureTalents. All rights reserved.</span>
+    <a class="footer-email" href="mailto:tanner@insuretalents.com">tanner@insuretalents.com</a>
+  </footer>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+
+    document.querySelectorAll('a[href="#"]').forEach(a => {
+      a.addEventListener('click', e => e.preventDefault());
+    });
+  </script>
+</body>
+</html>
