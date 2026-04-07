@@ -204,25 +204,65 @@
     .footer-link:hover { color: var(--gold-light); }
 
     @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; }
+      nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero, .photo-split, .page-hero { grid-template-columns: 1fr; }
-      .hero-right { height: 300px; }
-      .page-hero-img { height: 200px; }
-      .hero-left, .photo-split-content, .page-hero-content { padding: 3rem 1.5rem; }
-      .section { padding: 4rem 1.5rem; }
-      .disciplines-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-steps { grid-template-columns: 1fr 1fr; }
-      .process-step { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.12); }
-      .process-step:nth-child(2n) { border-bottom: 1px solid rgba(11,31,58,0.12); }
-      .process-step:last-child { border-bottom: none; }
-      .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
-      .mosaic-item-tall { grid-row: span 1; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-      .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 2rem; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1.25rem 1.5rem; text-align: center; }
+
+      /* hero */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 2.5rem 1.25rem 2rem; }
+      .hero-right { height: 240px; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero-sub { font-size: 0.92rem; }
+
+      /* page hero (about/contact banner) */
+      .page-hero { grid-template-columns: 1fr; height: auto; min-height: 0; }
+      .page-hero-content { padding: 1.25rem 1.25rem 1.25rem; order: 1; }
+      .page-hero-img { height: 140px; order: 2; }
+      .page-hero h1 { font-size: 1.5rem !important; line-height: 1.2; }
+      .page-hero-sub { font-size: 0.85rem; margin-top: 0.5rem; }
+      .label { font-size: 0.65rem; margin-bottom: 0.5rem; }
+
+      /* about */
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem; }
+      .about-text h2 { font-size: 1.5rem; }
+      .photo-split { grid-template-columns: 1fr; min-height: auto; }
+      .photo-split-img { height: 220px; }
+      .photo-split-content { padding: 2.5rem 1.25rem; }
+      .pull-quote { font-size: 1.2rem; }
+
+      /* contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.25rem 3rem; }
+      .contact-info h2 { font-size: 1.4rem; }
+      .contact-img { height: 160px; margin-top: 1.25rem; }
+      .contact-form { gap: 0.9rem; }
       .form-row { grid-template-columns: 1fr; }
+      .form-group input, .form-group select, .form-group textarea { font-size: 1rem; padding: 0.75rem 0.9rem; }
+      .form-submit { width: 100%; text-align: center; padding: 0.9rem 1rem; }
+
+      /* sections */
+      .section { padding: 3rem 1.25rem; }
+      .section-title { font-size: 1.75rem; }
+      .disciplines-grid { grid-template-columns: 1fr 1fr; }
+      .discipline-card { padding: 1.5rem 1.1rem; }
+      .discipline-card h3 { font-size: 1.1rem; }
+
+      /* process */
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.12); padding: 1.75rem 1.25rem; }
+      .process-step:last-child { border-bottom: none; }
+
+      /* mosaic */
+      .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
+      .mosaic-item-tall { grid-row: span 1; }
+
+      /* metrics section inline styles need override */
+      .section-alt [style*="grid-template-columns:repeat(4"] { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+      .section-alt [style*="grid-template-columns:1fr 1fr"] { display: grid !important; grid-template-columns: 1fr !important; }
+
+      /* footer */
+      .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem 1.5rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1rem 1.25rem; text-align: center; }
     }
   </style>
 </head>
@@ -230,7 +270,7 @@
 
 <nav>
   <div class="nav-logo-wrap" onclick="showPage('home')">
-    <div class="nav-logo-text"><span class="insure">Insure</span><span class="dot">·</span><span class="talents">Talents</span></div>
+    <div class="nav-logo-text"><span class="insure">Insure</span><span class="talents">Talents</span></div>
   </div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')">Home</a></li>
@@ -522,7 +562,7 @@
       <div class="contact-detail">
         <div class="contact-detail-item">
           <span class="contact-detail-label">Email</span>
-          <span class="contact-detail-value"><a href="mailto:james@insuretalents.com" style="color:var(--navy);text-decoration:none;">james@insuretalents.com</a></span>
+          <span class="contact-detail-value"><a href="mailto:tanner@insuretalents.com" style="color:var(--navy);text-decoration:none;">tanner@insuretalents.com</a></span>
         </div>
         <div class="contact-detail-item">
           <span class="contact-detail-label">Website</span>
@@ -715,7 +755,7 @@
   <div class="footer-main">
     <div class="footer-brand">
       <div class="footer-logo-wrap">
-        <div class="footer-logo-text"><span class="insure">Insure</span><span class="dot">·</span><span class="talents">Talents</span></div>
+        <div class="footer-logo-text"><span class="insure">Insure</span><span class="talents">Talents</span></div>
       </div>
       <p class="footer-tagline">Boutique insurance recruiting across every discipline — built on industry knowledge and a commitment to placements that last.</p>
     </div>
@@ -743,7 +783,7 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 InsureTalents. All rights reserved.</span>
-    <a class="footer-link" href="mailto:james@insuretalents.com">james@insuretalents.com</a>
+    <a class="footer-link" href="mailto:tanner@insuretalents.com">tanner@insuretalents.com</a>
   </div>
 </footer>
 
