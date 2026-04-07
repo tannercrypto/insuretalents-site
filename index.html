@@ -150,7 +150,7 @@
     .page-hero h1 em { color: var(--gold-light); font-style: italic; }
     .page-hero-sub { font-size: 0.95rem; color: rgba(255,255,255,0.48); line-height: 1.75; font-weight: 300; margin-top: 0.85rem; max-width: 400px; }
 
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding: 6rem 3.5rem; align-items: start; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 4rem 3.5rem; align-items: start; }
     .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--navy); margin-bottom: 1.25rem; line-height: 1.2; }
     .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 1.1rem; }
     .pillars { display: flex; flex-direction: column; gap: 1px; background: rgba(11,31,58,0.1); border: 1px solid rgba(11,31,58,0.1); }
@@ -503,14 +503,9 @@
 
 <!-- ABOUT -->
 <div id="page-about" class="page">
-  <div class="page-hero" style="min-height:0; height:auto;">
-    <div class="page-hero-content" style="padding:1.5rem 3.5rem 1.75rem;">
-      <p class="label">About InsureTalents</p>
-      <h1 style="font-size:clamp(1.4rem,2.5vw,2.2rem);">Built by <em>insurance professionals.</em></h1>
-    </div>
-    <div class="page-hero-img">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&fit=crop" alt="Modern office" />
-    </div>
+  <div style="background:var(--navy); padding:2rem 3.5rem 1.75rem; margin-top:70px; border-bottom:1px solid rgba(201,168,76,0.18);">
+    <p class="label" style="margin-bottom:0.5rem;">About InsureTalents</p>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:500; color:var(--white); line-height:1.15;">Built by <em style="color:var(--gold-light); font-style:italic;">insurance professionals.</em></h1>
   </div>
 
   <div class="about-grid">
@@ -795,6 +790,20 @@
     document.getElementById('form-success').style.display = 'block';
     e.target.reset();
   }
+
+  // Block pinch zoom on iOS (meta viewport alone doesn't work on iOS 10+)
+  document.addEventListener('touchmove', function(e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  var lastTouchEnd = 0;
+  document.addEventListener('touchend', function(e) {
+    var now = Date.now();
+    if (now - lastTouchEnd <= 300) e.preventDefault();
+    lastTouchEnd = now;
+  }, false);
 </script>
 </body>
 </html>
