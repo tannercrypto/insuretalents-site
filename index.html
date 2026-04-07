@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InsureTalents — Insurance Recruiting</title>
+  <title>InsureTalents — Boutique Insurance Recruiting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -17,690 +17,549 @@
       --cream: #F7F4EE;
       --cream-dark: #EDE8DF;
       --text: #0B1F3A;
-      --text-muted: #4A5568;
+      --text-muted: #556070;
       --white: #ffffff;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 4rem;
-      background: rgba(11, 31, 58, 0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3.5rem; height: 70px;
+      background: rgba(11,31,58,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.18);
     }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.65rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .nav-logo-svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
     .nav-links a:hover { color: var(--gold); }
+    .nav-cta { padding: 0.55rem 1.4rem; background: var(--gold); color: var(--navy) !important; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
 
-    /* PAGE SECTIONS */
     .page { display: none; }
     .page.active { display: block; }
 
-    /* HERO */
     .hero {
-      min-height: 100vh;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 0 4rem;
+      min-height: 100vh; padding-top: 70px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--navy); position: relative; overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      border: 1px solid rgba(201, 168, 76, 0.12);
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 5%;
-      right: 5%;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      border: 1px solid rgba(201, 168, 76, 0.08);
-    }
-    .hero-inner {
-      max-width: 720px;
-      animation: fadeUp 0.9s ease both;
-    }
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 1.75rem;
-      letter-spacing: -0.01em;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.75;
-      max-width: 520px;
-      margin-bottom: 2.75rem;
-      font-weight: 300;
-    }
-    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s, transform 0.15s;
-    }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 3.5rem; position: relative; z-index: 2; }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; }
+    .hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--navy) 0%, transparent 45%); }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 500; color: var(--white); line-height: 1.06; margin-bottom: 1.75rem; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 460px; margin-bottom: 2.75rem; font-weight: 300; }
+    .btn-group { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .btn-primary { padding: 0.9rem 2rem; background: var(--gold); color: var(--navy); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; font-family: 'DM Sans', sans-serif; }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .btn-outline {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: transparent;
-      color: var(--white);
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .btn-outline { padding: 0.9rem 2rem; background: transparent; color: var(--white); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; transition: border-color 0.2s, color 0.2s; font-family: 'DM Sans', sans-serif; }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* STATS BAR */
-    .stats-bar {
-      background: var(--cream-dark);
-      border-bottom: 1px solid rgba(11,31,58,0.1);
-      padding: 2.5rem 4rem;
-      display: flex;
-      gap: 0;
-    }
-    .stat {
-      flex: 1;
-      text-align: center;
-      padding: 0 2rem;
-      border-right: 1px solid rgba(11,31,58,0.12);
-    }
+    .stats-bar { background: var(--gold); display: flex; }
+    .stat { flex: 1; text-align: center; padding: 1.5rem 1rem; border-right: 1px solid rgba(11,31,58,0.15); }
     .stat:last-child { border-right: none; }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.6rem;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .stat-num span { color: var(--gold); }
-    .stat-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(11,31,58,0.6); font-weight: 500; margin-top: 0.3rem; }
 
-    /* SERVICES */
-    .section {
-      padding: 7rem 4rem;
-    }
-    .section-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 500;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 540px;
-      font-weight: 300;
-      margin-bottom: 3.5rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5px;
-      background: rgba(11,31,58,0.1);
-      border: 1.5px solid rgba(11,31,58,0.1);
-    }
-    .service-card {
-      background: var(--cream);
-      padding: 2.5rem;
-      transition: background 0.25s;
-    }
-    .service-card:hover { background: var(--white); }
-    .service-icon {
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 1.75rem;
-    }
-    .service-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 0.75rem;
-    }
-    .service-card p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-weight: 300;
-    }
+    .section { padding: 6rem 3.5rem; }
+    .section-alt { background: var(--cream-dark); }
+    .section-navy { background: var(--navy); }
+    .label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+    .label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; color: var(--navy); line-height: 1.15; margin-bottom: 0.85rem; }
+    .section-title-light { color: var(--white); }
+    .section-sub { font-size: 0.97rem; color: var(--text-muted); line-height: 1.8; max-width: 520px; font-weight: 300; margin-bottom: 3.5rem; }
+    .section-sub-light { color: rgba(255,255,255,0.52); }
 
-    /* ABOUT PAGE */
-    .about-hero {
-      min-height: 55vh;
-      background: var(--navy);
-      display: flex;
-      align-items: flex-end;
-      padding: 6rem 4rem 4rem;
-    }
-    .about-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.1;
-    }
-    .about-hero h1 em { color: var(--gold-light); font-style: italic; }
-    .about-body {
-      padding: 6rem 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .about-body h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--navy);
-      margin-bottom: 1.25rem;
-      line-height: 1.2;
-    }
-    .about-body p {
-      font-size: 0.97rem;
-      color: var(--text-muted);
-      line-height: 1.85;
-      font-weight: 300;
-      margin-bottom: 1.25rem;
-    }
-    .about-body p:last-child { margin-bottom: 0; }
-    .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: rgba(11,31,58,0.1);
-      border: 1px solid rgba(11,31,58,0.1);
-    }
-    .pillar {
-      background: var(--cream);
-      padding: 1.75rem 2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-    }
-    .pillar-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--gold);
-      line-height: 1;
-      min-width: 28px;
-    }
-    .pillar-text h4 {
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 0.35rem;
-    }
-    .pillar-text p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      font-weight: 300;
-      margin: 0;
-    }
+    .disciplines-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(11,31,58,0.1); border: 1.5px solid rgba(11,31,58,0.1); }
+    .discipline-card { background: var(--cream); padding: 2rem 1.75rem; transition: background 0.2s; }
+    .discipline-card:hover { background: var(--white); }
+    .discipline-icon { width: 36px; height: 36px; margin-bottom: 1.25rem; }
+    .discipline-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+    .discipline-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
 
-    /* CONTACT PAGE */
-    .contact-hero {
-      min-height: 45vh;
-      background: var(--navy);
-      display: flex;
-      align-items: flex-end;
-      padding: 6rem 4rem 4rem;
-    }
-    .contact-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.1;
-    }
-    .contact-hero h1 em { color: var(--gold-light); font-style: italic; }
-    .contact-body {
-      padding: 6rem 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .contact-info h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--navy);
-      margin-bottom: 1rem;
-    }
-    .contact-info p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .contact-detail-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    .contact-detail-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-    }
-    .contact-detail-value {
-      font-size: 0.97rem;
-      color: var(--navy);
-      font-weight: 400;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .form-group label {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--text);
-      background: var(--white);
-      border: 1px solid rgba(11,31,58,0.15);
-      padding: 0.85rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-    .form-group textarea { resize: vertical; min-height: 130px; }
+    .photo-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .photo-split-img { position: relative; overflow: hidden; }
+    .photo-split-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+    .photo-split-img:hover img { transform: scale(1.03); }
+    .photo-split-content { background: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 5rem 3.5rem; }
+    .quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold); line-height: 0.6; margin-bottom: 1rem; opacity: 0.35; }
+    .pull-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; font-style: italic; color: var(--white); line-height: 1.5; margin-bottom: 1.5rem; }
+
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(11,31,58,0.12); }
+    .process-step { padding: 2.5rem 2rem; border-right: 1px solid rgba(11,31,58,0.12); }
+    .process-step:last-child { border-right: none; }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 1rem; }
+    .process-step h4 { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.6rem; }
+    .process-step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+    .mosaic { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 3px; }
+    .mosaic-item { overflow: hidden; }
+    .mosaic-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .mosaic-item:hover img { transform: scale(1.05); }
+    .mosaic-item-tall { grid-row: span 2; }
+
+    .page-hero { padding-top: 70px; min-height: 52vh; background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+    .page-hero-content { display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem 3.5rem; }
+    .page-hero-img { position: relative; overflow: hidden; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+    .page-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--navy) 0%, transparent 55%); }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 500; color: var(--white); line-height: 1.1; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero-sub { font-size: 0.95rem; color: rgba(255,255,255,0.48); line-height: 1.75; font-weight: 300; margin-top: 0.85rem; max-width: 400px; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding: 6rem 3.5rem; align-items: start; }
+    .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--navy); margin-bottom: 1.25rem; line-height: 1.2; }
+    .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 1.1rem; }
+    .pillars { display: flex; flex-direction: column; gap: 1px; background: rgba(11,31,58,0.1); border: 1px solid rgba(11,31,58,0.1); }
+    .pillar { background: var(--cream); padding: 1.6rem 2rem; display: flex; gap: 1.25rem; transition: background 0.2s; }
+    .pillar:hover { background: var(--white); }
+    .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--gold); min-width: 28px; line-height: 1.1; }
+    .pillar-text h4 { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem; }
+    .pillar-text p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin: 0; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding: 6rem 3.5rem; align-items: start; }
+    .contact-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info > p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+    .contact-detail { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
+    .contact-detail-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .contact-detail-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .contact-detail-value { font-size: 0.95rem; color: var(--navy); font-weight: 400; }
+    .contact-img { overflow: hidden; height: 240px; margin-top: 2rem; }
+    .contact-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; }
+    .form-group input, .form-group select, .form-group textarea { font-family: 'DM Sans', sans-serif; font-size: 0.93rem; font-weight: 300; color: var(--text); background: var(--white); border: 1px solid rgba(11,31,58,0.14); padding: 0.8rem 1rem; outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-submit {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: var(--navy);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-      align-self: flex-start;
-      border-radius: 0;
-    }
+    .form-submit { padding: 0.95rem 2.5rem; background: var(--navy); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
     .form-submit:hover { background: var(--navy-mid); }
+    #form-success { display: none; font-size: 0.87rem; color: #1a8a5a; font-weight: 400; }
 
-    /* FOOTER */
-    footer {
-      background: var(--navy);
-      padding: 3rem 4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(201,168,76,0.15);
-    }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.06em;
-    }
-    .footer-email {
-      font-size: 0.85rem;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .footer-email:hover { color: var(--gold-light); }
+    footer { background: var(--navy); border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-main { padding: 4rem 3.5rem 2.5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--white); }
+    .footer-logo-text span { color: var(--gold); }
+    .footer-tagline { font-size: 0.84rem; color: rgba(255,255,255,0.38); line-height: 1.7; font-weight: 300; max-width: 260px; }
+    .footer-col h5 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a, .footer-col ul li span { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; cursor: pointer; display: block; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom { padding: 1.25rem 3.5rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.27); letter-spacing: 0.05em; }
+    .footer-link { font-size: 0.76rem; color: var(--gold); text-decoration: none; }
+    .footer-link:hover { color: var(--gold-light); }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in {
-      animation: fadeUp 0.7s ease both;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
       .nav-links { gap: 1.5rem; }
-      .hero { padding: 6rem 1.5rem 3rem; }
-      .stats-bar { flex-direction: column; padding: 2rem 1.5rem; gap: 1.5rem; }
-      .stat { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.12); padding: 0 0 1.5rem; }
-      .stat:last-child { border-bottom: none; padding-bottom: 0; }
+      .hero, .photo-split, .page-hero { grid-template-columns: 1fr; }
+      .hero-right { height: 300px; }
+      .page-hero-img { height: 200px; }
+      .hero-left, .photo-split-content, .page-hero-content { padding: 3rem 1.5rem; }
       .section { padding: 4rem 1.5rem; }
-      .about-hero, .contact-hero { padding: 5rem 1.5rem 3rem; }
-      .about-body, .contact-body { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .disciplines-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(11,31,58,0.12); }
+      .process-step:nth-child(2n) { border-bottom: 1px solid rgba(11,31,58,0.12); }
+      .process-step:last-child { border-bottom: none; }
+      .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+      .mosaic-item-tall { grid-row: span 1; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1.25rem 1.5rem; text-align: center; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" onclick="showPage('home')">Insure<span>Talents</span></a>
-    <ul class="nav-links">
-      <li><a href="#" onclick="showPage('home')">Home</a></li>
-      <li><a href="#" onclick="showPage('about')">About</a></li>
-      <li><a href="#" onclick="showPage('contact')">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <div class="nav-logo-wrap" onclick="showPage('home')">
+    <svg class="nav-logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1.2"/>
+      <path d="M10 25 L18 9 L26 25" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.5 20.5 L22.5 20.5" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="18" cy="9" r="2" fill="#C9A84C"/>
+      <path d="M14.5 28 Q18 30.5 21.5 28" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+    <div class="nav-logo-text">Insure<span>Talents</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')">Home</a></li>
+    <li><a onclick="showPage('about')">About</a></li>
+    <li><a onclick="showPage('contact')" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
 
-  <!-- HOME PAGE -->
-  <div id="page-home" class="page active">
-    <section class="hero">
-      <div class="hero-inner">
-        <p class="hero-eyebrow">Boutique Insurance Recruiting</p>
-        <h1>The right talent<br>for <em>your</em> agency.</h1>
-        <p class="hero-sub">InsureTalents specializes in placing top-tier insurance professionals — from independent agents to commercial producers — with firms built for growth.</p>
-        <div class="btn-group">
-          <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
-          <button class="btn-outline" onclick="showPage('about')">Our Story</button>
-        </div>
-      </div>
-    </section>
+<!-- HOME -->
+<div id="page-home" class="page active">
 
-    <div class="stats-bar">
-      <div class="stat">
-        <div class="stat-num">$400<span>K+</span></div>
-        <div class="stat-label">Agency Revenue Placed</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5<span>+</span></div>
-        <div class="stat-label">Years Recruiting Insurance</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5</div>
-        <div class="stat-label">RVPs Placed in 6 Months</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">P<span>&</span>C</div>
-        <div class="stat-label">Commercial & Personal Lines</div>
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Boutique Insurance Recruiting</p>
+      <h1>Connecting <em>elite</em><br>insurance talent<br>with firms<br>built to win.</h1>
+      <p class="hero-sub">InsureTalents specializes in placing top-tier insurance professionals across every discipline — from frontline producers to senior underwriters and C-suite executives.</p>
+      <div class="btn-group">
+        <button class="btn-primary" onclick="showPage('contact')">Start a Search</button>
+        <button class="btn-outline" onclick="showPage('about')">Our Story</button>
       </div>
     </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1000&q=80&fit=crop" alt="Insurance professionals" />
+    </div>
+  </section>
 
-    <section class="section">
-      <p class="section-eyebrow">What We Do</p>
-      <h2 class="section-title">Specialized recruiting<br>for insurance firms.</h2>
-      <p class="section-sub">We don't do generalist staffing. Every search we run is insurance-specific — built on deep industry relationships and a refined eye for talent.</p>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>Agent Recruitment</h3>
-          <p>We identify and recruit experienced captive and independent P&C agents ready to make their next move — including transitions from State Farm, Allstate, Farmers, and American Family.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>Commercial Producer Search</h3>
-          <p>We source commercial lines producers from top brokerages including USI, Gallagher, HUB, and Lockton — professionals with proven books and real market relationships.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>Executive Placement</h3>
-          <p>From Regional Vice Presidents to agency principals, we've placed senior insurance leaders across the country. Discreet, thorough, and results-driven.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>Agency Growth Consulting</h3>
-          <p>Beyond the hire — we advise growing agencies on recruiting strategy, compensation structures, and how to attract top talent in a competitive market.</p>
-        </div>
-      </div>
-    </section>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">$400K+</div><div class="stat-label">Agency Revenue Placed</div></div>
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Industry Expertise</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">RVPs Placed in 6 Months</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Insurance Disciplines</div></div>
   </div>
 
-  <!-- ABOUT PAGE -->
-  <div id="page-about" class="page">
-    <div class="about-hero">
+  <section class="section">
+    <p class="label">What We Recruit</p>
+    <h2 class="section-title">Every discipline.<br>One firm.</h2>
+    <p class="section-sub">We don't generalize. We specialize across every functional area of insurance — placing the right professionals at every level of the industry.</p>
+    <div class="disciplines-grid">
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 22V12l10-8 10 8v10" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="15" width="8" height="7" stroke="#C9A84C" stroke-width="1.2" rx="0.5"/></svg>
+        </div>
+        <h3>Sales & Producers</h3>
+        <p>Captive and independent P&C agents, commercial lines producers, and account executives with proven books of business across personal and commercial markets.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M7 10h14M7 14h10M7 18h8" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"/><rect x="3" y="5" width="22" height="18" rx="1" stroke="#C9A84C" stroke-width="1.2"/></svg>
+        </div>
+        <h3>Underwriting</h3>
+        <p>Commercial and personal lines underwriters at all levels — junior analysts to chief underwriting officers — across property, casualty, specialty, and E&S markets.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="9" r="4" stroke="#C9A84C" stroke-width="1.4"/><path d="M6 24c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Claims</h3>
+        <p>Adjusters, examiners, investigators, and directors spanning auto, property, liability, workers' comp, and complex litigation management roles.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 14h20" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"/><circle cx="14" cy="14" r="10" stroke="#C9A84C" stroke-width="1.2"/></svg>
+        </div>
+        <h3>Account Management</h3>
+        <p>Client-facing account managers and service representatives who retain and grow relationships across commercial, employee benefits, and personal lines portfolios.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 20L14 6l8 14H6z" stroke="#C9A84C" stroke-width="1.4" stroke-linejoin="round"/><line x1="10" y1="16" x2="18" y2="16" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Executive Search</h3>
+        <p>C-suite and senior leadership placements — CEOs, COOs, CFOs, Regional VPs, and agency principals — handled with discretion and precision.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="14" rx="1" stroke="#C9A84C" stroke-width="1.3"/><path d="M9 8V6a5 5 0 0 1 10 0v2" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/><circle cx="14" cy="15" r="2" stroke="#C9A84C" stroke-width="1.2"/></svg>
+        </div>
+        <h3>Risk Management</h3>
+        <p>Corporate risk managers, ERM analysts, and risk consultants who protect balance sheets and advise on enterprise-wide exposure strategies.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 22 L10 14 L15 18 L20 10 L24 13" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Actuarial & Analytics</h3>
+        <p>Actuaries, data scientists, and pricing analysts driving profitability through advanced modeling across personal lines, commercial, and reinsurance.</p>
+      </div>
+      <div class="discipline-card">
+        <div class="discipline-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="4" stroke="#C9A84C" stroke-width="1.3"/><circle cx="20" cy="18" r="4" stroke="#C9A84C" stroke-width="1.3"/><path d="M14 10h2a4 4 0 0 1 4 4v0" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Employee Benefits</h3>
+        <p>Benefits brokers, consultants, and account teams specializing in group health, voluntary benefits, and employer-sponsored programs for mid-market and enterprise clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="photo-split">
+    <div class="photo-split-img">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80&fit=crop" alt="Professional handshake" />
+    </div>
+    <div class="photo-split-content">
+      <p class="label" style="margin-bottom:1.5rem;">Our Difference</p>
+      <div class="quote-mark">"</div>
+      <p class="pull-quote">We don't source resumes. We identify insurance professionals who are quietly exceptional — and connect them with firms ready to grow.</p>
+      <p class="section-sub section-sub-light" style="margin-bottom:1.75rem;">Every search is led by someone who has lived inside this industry. We understand the market, the roles, and what makes a placement actually stick.</p>
+      <button class="btn-outline" onclick="showPage('contact')">Work With Us</button>
+    </div>
+  </div>
+
+  <section class="section section-alt">
+    <p class="label">How We Work</p>
+    <h2 class="section-title">A process built<br>for results.</h2>
+    <p class="section-sub">Focused, efficient searches that respect your time and deliver candidates who are qualified, vetted, and genuinely interested.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>We learn your firm, your culture, your open role, and what success actually looks like for this hire.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Sourcing</h4>
+        <p>We tap our proprietary insurance network and conduct targeted outreach to passive candidates not on job boards.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Vetting</h4>
+        <p>Every candidate is interviewed before they reach you — assessed on skills, culture fit, and genuine interest in the opportunity.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Placement</h4>
+        <p>We manage the offer process and stay engaged through day one and beyond to ensure a successful transition.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mosaic">
+    <div class="mosaic-item mosaic-item-tall">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop" alt="Team meeting" />
+    </div>
+    <div class="mosaic-item">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop" alt="Professional woman" />
+    </div>
+    <div class="mosaic-item">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Professional man" />
+    </div>
+    <div class="mosaic-item">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80&fit=crop" alt="Office collaboration" />
+    </div>
+    <div class="mosaic-item">
+      <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=600&q=80&fit=crop" alt="Business discussion" />
+    </div>
+  </div>
+
+  <section class="section section-navy" style="text-align:center; padding: 5rem 3.5rem;">
+    <p class="label" style="justify-content:center;">Ready to Build Your Team?</p>
+    <h2 class="section-title section-title-light" style="margin-bottom:1rem;">Let's find your<br>next great hire.</h2>
+    <p class="section-sub section-sub-light" style="margin: 0 auto 2.5rem; text-align:center;">Whether you're filling one critical role or building out an entire department, InsureTalents is ready to run the search.</p>
+    <button class="btn-primary" onclick="showPage('contact')">Start a Conversation</button>
+  </section>
+
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="label">About InsureTalents</p>
       <h1>Built by someone<br>who knows <em>insurance.</em></h1>
+      <p class="page-hero-sub">A boutique firm founded on deep industry knowledge and a commitment to placements that last.</p>
     </div>
-    <div class="about-body">
-      <div>
-        <h2>We speak the language of the industry.</h2>
-        <p>InsureTalents was founded by an insurance recruiting professional with over 5 years of full-cycle experience across agency, corporate, and boutique environments. We've worked inside the industry — not just around it.</p>
-        <p>Our background spans captive agent transitions, commercial lines producer recruitment, employee benefits staffing, and senior executive search. We understand the difference between a good resume and a great producer.</p>
-        <p>We serve independent agencies, regional carriers, and national brokerages who are serious about building teams that perform — not just filling seats.</p>
+    <div class="page-hero-img">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&fit=crop" alt="Modern office" />
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>We're not generalists.<br>We're insurance recruiters.</h2>
+      <p>InsureTalents was founded with a single conviction: insurance is a specialized industry, and it deserves a specialized recruiting partner. We've spent years inside this market — not observing it from the outside — which means we understand the difference between a resume and a real producer.</p>
+      <p>Our background spans captive agent transitions, commercial lines producer recruitment, employee benefits staffing, underwriting, claims, risk management, and senior executive search. We place professionals at every level, from first-year account managers to Regional Vice Presidents.</p>
+      <p>We work with independent agencies, regional carriers, and national brokerages that are serious about building high-performing teams — and who want a recruiting partner who speaks the language of their industry.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-text">
+          <h4>Industry-First Mindset</h4>
+          <p>Every search is led by a recruiter with real insurance expertise — not a generalist learning your industry on your dime.</p>
+        </div>
       </div>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-num">01</div>
-          <div class="pillar-text">
-            <h4>Industry-First</h4>
-            <p>Every search is led by a recruiter with real insurance knowledge — not a generalist learning on the fly.</p>
-          </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-text">
+          <h4>Boutique Attention</h4>
+          <p>We deliberately limit active searches so every client gets our full focus, network, and energy.</p>
         </div>
-        <div class="pillar">
-          <div class="pillar-num">02</div>
-          <div class="pillar-text">
-            <h4>Boutique Attention</h4>
-            <p>We take on a limited number of searches at a time so every client gets our full focus and network.</p>
-          </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-text">
+          <h4>Nationwide Reach</h4>
+          <p>Active recruiting across TX, WA, OH, IL, AZ, CA, and beyond — with a candidate network built over years in the industry.</p>
         </div>
-        <div class="pillar">
-          <div class="pillar-num">03</div>
-          <div class="pillar-text">
-            <h4>Nationwide Reach</h4>
-            <p>Active recruiting presence across TX, WA, OH, IL, AZ, and beyond — with a national candidate network.</p>
-          </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div class="pillar-text">
+          <h4>Results That Last</h4>
+          <p>We measure success by placements that stick — professionals who thrive, not candidates who churn inside 90 days.</p>
         </div>
-        <div class="pillar">
-          <div class="pillar-num">04</div>
-          <div class="pillar-text">
-            <h4>Results-Driven</h4>
-            <p>We're measured by placements that stick — not activity metrics. Quality over quantity, every time.</p>
-          </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <div class="pillar-text">
+          <h4>Discretion & Integrity</h4>
+          <p>Confidentiality is non-negotiable. Every search and candidate conversation is handled with total professionalism.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT PAGE -->
-  <div id="page-contact" class="page">
-    <div class="contact-hero">
-      <h1>Let's find your<br><em>next hire.</em></h1>
+  <div class="photo-split">
+    <div class="photo-split-content" style="background: var(--cream-dark);">
+      <p class="label">For Employers</p>
+      <h2 class="section-title" style="margin-bottom:1rem;">Your next hire<br>is already out there.</h2>
+      <p class="section-sub" style="color: var(--text-muted); margin-bottom: 1.75rem;">The best insurance talent rarely applies to job postings. We reach passive candidates who aren't on job boards and present your opportunity compellingly.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Start a Search</button>
     </div>
-    <div class="contact-body">
-      <div class="contact-info">
-        <h2>Start the conversation.</h2>
-        <p>Whether you're an agency ready to grow your team or an insurance professional exploring your next opportunity — we'd like to hear from you.</p>
-        <div class="contact-detail">
-          <div class="contact-detail-item">
-            <span class="contact-detail-label">Email</span>
-            <span class="contact-detail-value">tanner@insuretalents.com</span>
-          </div>
-          <div class="contact-detail-item">
-            <span class="contact-detail-label">Website</span>
-            <span class="contact-detail-value">insuretalents.com</span>
-          </div>
-          <div class="contact-detail-item">
-            <span class="contact-detail-label">Specialties</span>
-            <span class="contact-detail-value">P&C · Commercial Lines · Agent Recruitment · Executive Search</span>
-          </div>
-        </div>
-      </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" placeholder="Tanner" required />
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Smith" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="you@company.com" required />
-        </div>
-        <div class="form-group">
-          <label>I am a...</label>
-          <select>
-            <option value="">Select one</option>
-            <option>Agency / Employer looking to hire</option>
-            <option>Insurance professional exploring opportunities</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell us about your situation — we'll respond within one business day."></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Message</button>
-        <div id="form-success" style="display:none; font-size:0.88rem; color: #1D9E75; font-weight:400;">Message sent — we'll be in touch shortly.</div>
-      </form>
+    <div class="photo-split-img">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80&fit=crop" alt="Business meeting" />
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="label">Get In Touch</p>
+      <h1>Let's find your<br><em>next great hire.</em></h1>
+      <p class="page-hero-sub">Employer or candidate — we'd like to hear from you. All inquiries handled confidentially.</p>
+    </div>
+    <div class="page-hero-img">
+      <img src="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=900&q=80&fit=crop" alt="Professional conversation" />
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Insure<span>Talents</span></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>Start the conversation.</h2>
+      <p>Reach out directly or fill out the form and we'll respond within one business day.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value">tanner@insuretalents.com</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Website</span>
+          <span class="contact-detail-value">insuretalents.com</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">LinkedIn</span>
+          <span class="contact-detail-value">linkedin.com/company/insuretalent</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Specialties</span>
+          <span class="contact-detail-value">P&C · Commercial Lines · Underwriting · Claims · Account Management · Executive Search · Employee Benefits · Actuarial</span>
+        </div>
+      </div>
+      <div class="contact-img">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&fit=crop" alt="Professionals working" />
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" required /></div>
+        <div class="form-group"><label>Last Name</label><input type="text" required /></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" required /></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" /></div>
+      <div class="form-group">
+        <label>I am a...</label>
+        <select>
+          <option value="">Select one</option>
+          <option>Agency / Employer looking to hire</option>
+          <option>Insurance professional exploring opportunities</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Discipline / Role Type</label>
+        <select>
+          <option value="">Select a discipline</option>
+          <option>Sales & Producers</option>
+          <option>Underwriting</option>
+          <option>Claims</option>
+          <option>Account Management</option>
+          <option>Executive Search</option>
+          <option>Risk Management</option>
+          <option>Actuarial & Analytics</option>
+          <option>Employee Benefits</option>
+          <option>Other / Multiple</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your search or situation — the more detail the better."></textarea></div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <div id="form-success">Message sent — we'll be in touch within one business day.</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1.2"/><path d="M10 25 L18 9 L26 25" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 20.5 L22.5 20.5" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/><circle cx="18" cy="9" r="2" fill="#C9A84C"/></svg>
+        <div class="footer-logo-text">Insure<span>Talents</span></div>
+      </div>
+      <p class="footer-tagline">Boutique insurance recruiting across every discipline — built on industry knowledge and a commitment to placements that last.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">About</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Disciplines</h5>
+      <ul>
+        <li><span>Sales & Producers</span></li>
+        <li><span>Underwriting</span></li>
+        <li><span>Claims</span></li>
+        <li><span>Account Management</span></li>
+        <li><span>Executive Search</span></li>
+        <li><span>Employee Benefits</span></li>
+        <li><span>Risk Management</span></li>
+        <li><span>Actuarial & Analytics</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 InsureTalents. All rights reserved.</span>
-    <a class="footer-email" href="mailto:tanner@insuretalents.com">tanner@insuretalents.com</a>
-  </footer>
+    <a class="footer-link" href="mailto:tanner@insuretalents.com">tanner@insuretalents.com</a>
+  </div>
+</footer>
 
-  <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + id).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('form-success').style.display = 'block';
-      e.target.reset();
-    }
-
-    document.querySelectorAll('a[href="#"]').forEach(a => {
-      a.addEventListener('click', e => e.preventDefault());
-    });
-  </script>
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+  }
+</script>
 </body>
 </html>
