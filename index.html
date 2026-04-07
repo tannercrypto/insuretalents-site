@@ -265,46 +265,46 @@
       .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1rem 1.25rem; text-align: center; }
 
       /* metrics mobile */
-      .metrics-section { padding: 3rem 1.25rem; }
-      .metrics-kpi-grid { grid-template-columns: 1fr 1fr; }
-      .metrics-kpi-card { padding: 1.5rem 1rem; }
-      .metrics-kpi-num { font-size: 2.4rem; }
-      .metrics-kpi-unit { font-size: 1.2rem; }
-      .metrics-kpi-label { font-size: 0.62rem; }
-      .metrics-bottom-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-      .disc-name { width: 100px; font-size: 0.74rem; }
-      .metrics-card { padding: 1.5rem 1.25rem; }
-      .cta-image-wrap { height: 240px; }
+      .metrics-section { padding: 2.5rem 1.25rem; }
+      .metrics-kpi-card { padding: 1.4rem 0.75rem; }
+      .metrics-kpi-num { font-size: 2.2rem; }
+      .metrics-kpi-unit { font-size: 1.1rem; }
+      .metrics-kpi-label { font-size: 0.58rem; letter-spacing: 0.07em; }
+      .metrics-photo { height: 240px; }
+      .metrics-photo-quote { font-size: 1rem; }
+      .metrics-card { padding: 1.25rem 1rem; }
+      .disc-name { width: 95px; font-size: 0.73rem; }
+      .cta-image-wrap { height: 200px; }
     }
 
     /* ── METRICS SECTION ── */
     .metrics-section { padding: 5rem 3.5rem; background: var(--cream-dark); }
-    .metrics-kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5px; background: rgba(11,31,58,0.1); border: 1.5px solid rgba(11,31,58,0.1); margin-bottom: 2.5rem; }
-    .metrics-kpi-card { padding: 2.5rem 1.5rem; text-align: center; }
+    /* KPI grid — always 2x2 */
+    .metrics-kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(11,31,58,0.1); border: 1.5px solid rgba(11,31,58,0.1); margin-bottom: 2.5rem; }
+    .metrics-kpi-card { padding: 2rem 1.5rem; text-align: center; }
     .metrics-kpi-dark { background: var(--navy); }
     .metrics-kpi-light { background: var(--white); }
-    .metrics-kpi-num { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 600; line-height: 1; }
-    .metrics-kpi-unit { font-size: 1.6rem; font-weight: 400; }
-    .metrics-kpi-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; color: var(--text-muted); }
-    .metrics-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-    .metrics-right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    .metrics-kpi-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600; line-height: 1; }
+    .metrics-kpi-unit { font-size: 1.5rem; font-weight: 400; }
+    .metrics-kpi-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; color: var(--text-muted); }
+    /* stack: photo then cards, single column */
+    .metrics-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+    .metrics-photo { position: relative; height: 320px; overflow: hidden; }
+    .metrics-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .metrics-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,31,58,0.92) 0%, rgba(11,31,58,0.3) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+    .metrics-photo-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--white); line-height: 1.5; margin-bottom: 0.5rem; }
+    .metrics-photo-sub { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; font-weight: 500; text-transform: uppercase; }
     .metrics-card { background: var(--white); border: 1px solid rgba(11,31,58,0.1); padding: 2rem; }
     .metrics-card-navy { background: var(--navy); border-color: rgba(201,168,76,0.15); }
-    .metrics-card-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .metrics-card-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
     .metrics-card-label::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); flex-shrink: 0; }
-    .funnel-rows { display: flex; flex-direction: column; gap: 0.65rem; }
-    .funnel-row-top { display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--text-muted); font-weight: 400; }
-    .funnel-row-top span:last-child { font-weight: 500; color: var(--navy); }
-    .funnel-bar-bg { height: 8px; background: rgba(11,31,58,0.07); overflow: hidden; }
-    .funnel-bar { height: 100%; }
-    .metrics-note { font-size: 0.77rem; color: var(--text-muted); margin-top: 1.25rem; font-weight: 300; line-height: 1.6; border-top: 1px solid rgba(11,31,58,0.08); padding-top: 1rem; }
     .discipline-bars { display: flex; flex-direction: column; gap: 0.85rem; }
     .disc-row { display: flex; align-items: center; gap: 0.75rem; }
     .disc-name { font-size: 0.78rem; color: var(--text-muted); width: 120px; flex-shrink: 0; }
-    .disc-bar-bg { flex: 1; height: 6px; background: rgba(11,31,58,0.07); overflow: hidden; }
+    .disc-bar-bg { flex: 1; min-width: 0; height: 6px; background: rgba(11,31,58,0.07); overflow: hidden; }
     .disc-bar { height: 100%; }
     .disc-pct { font-size: 0.75rem; font-weight: 500; color: var(--navy); width: 30px; text-align: right; flex-shrink: 0; }
-    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline { display: flex; flex-direction: column; }
     .tl-item { display: flex; align-items: flex-start; gap: 1rem; }
     .tl-dot-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
     .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); margin-top: 3px; }
@@ -640,17 +640,17 @@
   <section class="metrics-section">
     <p class="label" style="justify-content:center; margin-bottom:0.75rem;">Our Track Record</p>
     <h2 class="section-title" style="text-align:center; margin-bottom:0.75rem;">Numbers that speak<br>for themselves.</h2>
-    <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); font-weight:300; margin-bottom:3rem;">Across every search we run, from first outreach to signed offer.</p>
+    <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); font-weight:300; margin-bottom:2.5rem;">Across every search we run, from first outreach to signed offer.</p>
 
-    <!-- BIG METRICS ROW -->
+    <!-- KPI GRID: 2x2 always -->
     <div class="metrics-kpi-grid">
       <div class="metrics-kpi-card metrics-kpi-dark">
         <div class="metrics-kpi-num" style="color:var(--gold);">97<span class="metrics-kpi-unit">%</span></div>
-        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.55);">Offer Acceptance Rate</div>
+        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.6);">Offer Acceptance Rate</div>
       </div>
       <div class="metrics-kpi-card metrics-kpi-light">
         <div class="metrics-kpi-num" style="color:var(--navy);">7<span class="metrics-kpi-unit" style="color:var(--text-muted);">d</span></div>
-        <div class="metrics-kpi-label">Days to First Qualified Candidate</div>
+        <div class="metrics-kpi-label">Days to First Candidate</div>
       </div>
       <div class="metrics-kpi-card metrics-kpi-light">
         <div class="metrics-kpi-num" style="color:var(--navy);">21<span class="metrics-kpi-unit" style="color:var(--text-muted);">d</span></div>
@@ -658,68 +658,45 @@
       </div>
       <div class="metrics-kpi-card metrics-kpi-dark">
         <div class="metrics-kpi-num" style="color:var(--gold);">96<span class="metrics-kpi-unit">%</span></div>
-        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.55);">12-Month Retention Rate</div>
+        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.6);">12-Month Retention</div>
       </div>
     </div>
 
-    <!-- FUNNEL + BREAKDOWN -->
-    <div class="metrics-bottom-grid">
+    <!-- PHOTO + DISCIPLINE + TIMELINE: single column stacked -->
+    <div class="metrics-stack">
 
-      <!-- FUNNEL -->
+      <!-- PHOTO replaces funnel card -->
+      <div class="metrics-photo">
+        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1000&q=80&fit=crop" alt="Insurance professional" />
+        <div class="metrics-photo-overlay">
+          <p class="metrics-photo-quote">"Only the top 3–5 candidates from a pool of 120+ ever reach your desk."</p>
+          <p class="metrics-photo-sub">Industry avg. time-to-fill: 54 days &nbsp;·&nbsp; Ours: 21</p>
+        </div>
+      </div>
+
+      <!-- DISCIPLINE MIX -->
       <div class="metrics-card">
-        <div class="metrics-card-label">Avg. Recruiting Funnel Per Search</div>
-        <div class="funnel-rows">
-          <div class="funnel-row">
-            <div class="funnel-row-top"><span>Candidates Sourced</span><span>120+</span></div>
-            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:100%; background:var(--navy);"></div></div>
-          </div>
-          <div class="funnel-row">
-            <div class="funnel-row-top"><span>Outreach Contacts Made</span><span>85</span></div>
-            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:70%; background:var(--navy); opacity:0.75;"></div></div>
-          </div>
-          <div class="funnel-row">
-            <div class="funnel-row-top"><span>Qualified Interviews</span><span>22</span></div>
-            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:18%; background:var(--gold);"></div></div>
-          </div>
-          <div class="funnel-row">
-            <div class="funnel-row-top"><span>Candidates Presented</span><span>3–5</span></div>
-            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:4%; background:var(--gold);"></div></div>
-          </div>
-          <div class="funnel-row">
-            <div class="funnel-row-top"><span>Offer Accepted</span><span>1</span></div>
-            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:1%; background:var(--gold);"></div></div>
-          </div>
+        <div class="metrics-card-label">Placements by Discipline</div>
+        <div class="discipline-bars">
+          <div class="disc-row"><span class="disc-name">Sales &amp; Producers</span><div class="disc-bar-bg"><div class="disc-bar" style="width:38%; background:var(--navy);"></div></div><span class="disc-pct">38%</span></div>
+          <div class="disc-row"><span class="disc-name">Underwriting</span><div class="disc-bar-bg"><div class="disc-bar" style="width:22%; background:var(--navy); opacity:0.75;"></div></div><span class="disc-pct">22%</span></div>
+          <div class="disc-row"><span class="disc-name">Executive Search</span><div class="disc-bar-bg"><div class="disc-bar" style="width:18%; background:var(--gold);"></div></div><span class="disc-pct">18%</span></div>
+          <div class="disc-row"><span class="disc-name">Claims</span><div class="disc-bar-bg"><div class="disc-bar" style="width:12%; background:var(--gold); opacity:0.7;"></div></div><span class="disc-pct">12%</span></div>
+          <div class="disc-row"><span class="disc-name">Other</span><div class="disc-bar-bg"><div class="disc-bar" style="width:10%; background:rgba(11,31,58,0.25);"></div></div><span class="disc-pct">10%</span></div>
         </div>
-        <p class="metrics-note">Only the top 3–5 candidates from a pool of 120+ reach your desk — fully vetted and briefed. Industry avg. time-to-fill: 54 days. Ours: 21.</p>
       </div>
 
-      <!-- RIGHT COL -->
-      <div class="metrics-right-col">
-
-        <!-- DISCIPLINE MIX -->
-        <div class="metrics-card">
-          <div class="metrics-card-label">Placements by Discipline</div>
-          <div class="discipline-bars">
-            <div class="disc-row"><span class="disc-name">Sales & Producers</span><div class="disc-bar-bg"><div class="disc-bar" style="width:38%; background:var(--navy);"></div></div><span class="disc-pct">38%</span></div>
-            <div class="disc-row"><span class="disc-name">Underwriting</span><div class="disc-bar-bg"><div class="disc-bar" style="width:22%; background:var(--navy); opacity:0.75;"></div></div><span class="disc-pct">22%</span></div>
-            <div class="disc-row"><span class="disc-name">Executive Search</span><div class="disc-bar-bg"><div class="disc-bar" style="width:18%; background:var(--gold);"></div></div><span class="disc-pct">18%</span></div>
-            <div class="disc-row"><span class="disc-name">Claims</span><div class="disc-bar-bg"><div class="disc-bar" style="width:12%; background:var(--gold); opacity:0.7;"></div></div><span class="disc-pct">12%</span></div>
-            <div class="disc-row"><span class="disc-name">Other</span><div class="disc-bar-bg"><div class="disc-bar" style="width:10%; background:rgba(11,31,58,0.25);"></div></div><span class="disc-pct">10%</span></div>
-          </div>
+      <!-- TIMELINE -->
+      <div class="metrics-card metrics-card-navy">
+        <div class="metrics-card-label" style="color:var(--gold);">Typical Search Timeline</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 1</div><div class="tl-desc">Discovery call &amp; role brief</div></div></div>
+          <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 2–4</div><div class="tl-desc">Active sourcing &amp; outreach begins</div></div></div>
+          <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 5–7</div><div class="tl-desc">First qualified candidates presented</div></div></div>
+          <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div><div class="tl-day">Day 14–21</div><div class="tl-desc">Offer extended &amp; accepted</div></div></div>
         </div>
-
-        <!-- TIMELINE -->
-        <div class="metrics-card metrics-card-navy">
-          <div class="metrics-card-label" style="color:var(--gold);">Typical Search Timeline</div>
-          <div class="timeline">
-            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 1</div><div class="tl-desc">Discovery call &amp; role brief</div></div></div>
-            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 2–4</div><div class="tl-desc">Active sourcing &amp; outreach begins</div></div></div>
-            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 5–7</div><div class="tl-desc">First qualified candidates presented</div></div></div>
-            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div><div class="tl-day">Day 14–21</div><div class="tl-desc">Offer extended &amp; accepted</div></div></div>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </section>
 
