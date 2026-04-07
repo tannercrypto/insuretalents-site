@@ -30,15 +30,49 @@
       background: rgba(11,31,58,0.97);
       border-bottom: 1px solid rgba(201,168,76,0.18);
     }
-    .nav-logo-wrap { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-    .nav-logo-svg { width: 36px; height: 36px; flex-shrink: 0; }
-    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
-    .nav-logo-text span { color: var(--gold); }
+    .nav-logo-wrap { display: flex; align-items: center; cursor: pointer; }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem; font-weight: 600;
+      color: var(--white); letter-spacing: 0.04em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .nav-logo-text .insure {
+      color: var(--white);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.06em;
+    }
+    .nav-logo-text .talents {
+      color: var(--gold);
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.12em;
+      margin-left: 2px;
+    }
+    .nav-logo-text .dot {
+      color: var(--gold);
+      font-size: 2rem;
+      line-height: 0;
+      vertical-align: middle;
+      margin: 0 1px;
+    }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
     .nav-links a:hover { color: var(--gold); }
     .nav-cta { padding: 0.55rem 1.4rem; background: var(--gold); color: var(--navy) !important; font-weight: 500 !important; }
     .nav-cta:hover { background: var(--gold-light) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 199; background: rgba(11,31,58,0.99); flex-direction: column; border-bottom: 1px solid rgba(201,168,76,0.2); padding: 1.5rem 2rem; gap: 0; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); cursor: pointer; transition: color 0.2s; display: block; }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
+    .mobile-menu a:hover { color: var(--gold); }
 
     .page { display: none; }
     .page.active { display: block; }
@@ -150,9 +184,15 @@
     footer { background: var(--navy); border-top: 1px solid rgba(201,168,76,0.15); }
     .footer-main { padding: 4rem 3.5rem 2.5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
     .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
-    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--white); }
-    .footer-logo-text span { color: var(--gold); }
+    .footer-logo-wrap { display: flex; align-items: center; }
+    .footer-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--white);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .footer-logo-text .insure { color: rgba(255,255,255,0.75); font-weight: 400; font-style: italic; letter-spacing: 0.06em; }
+    .footer-logo-text .talents { color: var(--gold); font-weight: 600; letter-spacing: 0.12em; margin-left: 2px; }
+    .footer-logo-text .dot { color: var(--gold); font-size: 1.6rem; line-height: 0; vertical-align: middle; margin: 0 1px; }
     .footer-tagline { font-size: 0.84rem; color: rgba(255,255,255,0.38); line-height: 1.7; font-weight: 300; max-width: 260px; }
     .footer-col h5 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
@@ -165,7 +205,8 @@
 
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .hero, .photo-split, .page-hero { grid-template-columns: 1fr; }
       .hero-right { height: 300px; }
       .page-hero-img { height: 200px; }
@@ -189,21 +230,22 @@
 
 <nav>
   <div class="nav-logo-wrap" onclick="showPage('home')">
-    <svg class="nav-logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1.2"/>
-      <path d="M10 25 L18 9 L26 25" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M13.5 20.5 L22.5 20.5" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
-      <circle cx="18" cy="9" r="2" fill="#C9A84C"/>
-      <path d="M14.5 28 Q18 30.5 21.5 28" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.55"/>
-    </svg>
-    <div class="nav-logo-text">Insure<span>Talents</span></div>
+    <div class="nav-logo-text"><span class="insure">Insure</span><span class="dot">·</span><span class="talents">Talents</span></div>
   </div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')">Home</a></li>
     <li><a onclick="showPage('about')">About</a></li>
     <li><a onclick="showPage('contact')" class="nav-cta">Contact Us</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="navTo('home')">Home</a>
+  <a onclick="navTo('about')">About</a>
+  <a onclick="navTo('contact')">Contact Us</a>
+</div>
 
 <!-- HOME -->
 <div id="page-home" class="page active">
@@ -364,10 +406,10 @@
 
 <!-- ABOUT -->
 <div id="page-about" class="page">
-  <div class="page-hero" style="min-height:28vh;">
-    <div class="page-hero-content" style="padding:2rem 3.5rem;">
+  <div class="page-hero" style="min-height:0; height:auto;">
+    <div class="page-hero-content" style="padding:1.5rem 3.5rem 1.75rem;">
       <p class="label">About InsureTalents</p>
-      <h1 style="font-size:clamp(1.6rem,3vw,2.6rem);">Built by <em>insurance<br>professionals.</em></h1>
+      <h1 style="font-size:clamp(1.4rem,2.5vw,2.2rem);">Built by <em>insurance professionals.</em></h1>
     </div>
     <div class="page-hero-img">
       <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&fit=crop" alt="Modern office" />
@@ -438,32 +480,6 @@
   <div style="height:70px;background:var(--navy);"></div>
 
   <div class="contact-grid">
-    <div class="contact-info">
-      <h2>Start the conversation.</h2>
-      <p>Reach out directly or fill out the form and we'll respond within one business day.</p>
-      <div class="contact-detail">
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Email</span>
-          <span class="contact-detail-value">tanner@insuretalents.com</span>
-        </div>
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Website</span>
-          <span class="contact-detail-value">insuretalents.com</span>
-        </div>
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">LinkedIn</span>
-          <span class="contact-detail-value">linkedin.com/company/insuretalent</span>
-        </div>
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Specialties</span>
-          <span class="contact-detail-value">P&C · Commercial Lines · Underwriting · Claims · Account Management · Executive Search · Employee Benefits · Actuarial</span>
-        </div>
-      </div>
-      <div class="contact-img">
-        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&fit=crop" alt="Professionals working" />
-      </div>
-    </div>
-
     <form class="contact-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
         <div class="form-group"><label>First Name</label><input type="text" required /></div>
@@ -499,6 +515,32 @@
       <button type="submit" class="form-submit">Send Message</button>
       <div id="form-success">Message sent — we'll be in touch within one business day.</div>
     </form>
+
+    <div class="contact-info">
+      <h2>Get in touch.</h2>
+      <p>Reach out directly or use the form — we respond within one business day. All inquiries are confidential.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value"><a href="mailto:james@insuretalents.com" style="color:var(--navy);text-decoration:none;">james@insuretalents.com</a></span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Website</span>
+          <span class="contact-detail-value">insuretalents.com</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">LinkedIn</span>
+          <span class="contact-detail-value"><a href="https://www.linkedin.com/company/insuretalent/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">linkedin.com/company/insuretalent</a></span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Specialties</span>
+          <span class="contact-detail-value">P&amp;C · Commercial Lines · Underwriting · Claims · Account Management · Executive Search · Employee Benefits · Actuarial</span>
+        </div>
+      </div>
+      <div class="contact-img">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&fit=crop" alt="Professionals working" />
+      </div>
+    </div>
   </div>
   </div>
 
@@ -511,19 +553,19 @@
     <!-- BIG METRICS ROW -->
     <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:1.5px; background:rgba(11,31,58,0.1); border:1.5px solid rgba(11,31,58,0.1); margin-bottom:3rem;">
       <div style="background:var(--navy); padding:2.5rem 2rem; text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">94<span style="font-size:1.8rem;">%</span></div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">97<span style="font-size:1.8rem;">%</span></div>
         <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.5rem;">Offer Acceptance Rate</div>
       </div>
       <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; border-right:1.5px solid rgba(11,31,58,0.08);">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">18<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">d</span></div>
-        <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Avg. Days to First Candidate</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">7<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">d</span></div>
+          <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Days to First Qualified Candidate</div>
       </div>
       <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; border-right:1.5px solid rgba(11,31,58,0.08);">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">3.2<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">x</span></div>
-        <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Avg. Candidates Presented Per Role</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">21<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">d</span></div>
+          <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Avg. Days to Signed Offer</div>
       </div>
       <div style="background:var(--navy); padding:2.5rem 2rem; text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">91<span style="font-size:1.8rem;">%</span></div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">96<span style="font-size:1.8rem;">%</span></div>
         <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.5rem;">12-Month Retention Rate</div>
       </div>
     </div>
@@ -581,7 +623,7 @@
             </div>
           </div>
         </div>
-        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:1.5rem; font-weight:300; line-height:1.6; border-top:1px solid rgba(11,31,58,0.08); padding-top:1rem;">Only the top 3–5 candidates from a pool of 120+ ever reach your desk — fully vetted, fully briefed.</p>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:1.5rem; font-weight:300; line-height:1.6; border-top:1px solid rgba(11,31,58,0.08); padding-top:1rem;">Only the top 3–5 candidates from a pool of 120+ reach your desk — fully vetted and briefed. Industry average time-to-fill: 54 days. Ours: 21.</p>
       </div>
 
       <!-- BREAKDOWN BY DISCIPLINE + TIMELINE -->
@@ -652,7 +694,7 @@
                 <div style="width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:3px;"></div>
                 <div style="width:1px; height:28px; background:rgba(201,168,76,0.25);"></div>
               </div>
-              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 14–21</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">Shortlist presented to client</div></div>
+              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 5–7</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">First qualified candidates presented</div></div>
             </div>
             <div style="display:flex; align-items:flex-start; gap:1rem;">
               <div style="display:flex; flex-direction:column; align-items:center;">
@@ -673,8 +715,7 @@
   <div class="footer-main">
     <div class="footer-brand">
       <div class="footer-logo-wrap">
-        <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1.2"/><path d="M10 25 L18 9 L26 25" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 20.5 L22.5 20.5" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/><circle cx="18" cy="9" r="2" fill="#C9A84C"/></svg>
-        <div class="footer-logo-text">Insure<span>Talents</span></div>
+        <div class="footer-logo-text"><span class="insure">Insure</span><span class="dot">·</span><span class="talents">Talents</span></div>
       </div>
       <p class="footer-tagline">Boutique insurance recruiting across every discipline — built on industry knowledge and a commitment to placements that last.</p>
     </div>
@@ -702,11 +743,22 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 InsureTalents. All rights reserved.</span>
-    <a class="footer-link" href="mailto:tanner@insuretalents.com">tanner@insuretalents.com</a>
+    <a class="footer-link" href="mailto:james@insuretalents.com">james@insuretalents.com</a>
   </div>
 </footer>
 
 <script>
+  function toggleMenu() {
+    const h = document.getElementById('hamburger');
+    const m = document.getElementById('mobile-menu');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+  }
+  function navTo(id) {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+    showPage(id);
+  }
   function goToContact(type) {
     showPage('contact');
     setTimeout(() => {
