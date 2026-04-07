@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>InsureTalents — Boutique Insurance Recruiting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -263,7 +263,59 @@
       /* footer */
       .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem 1.5rem; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1rem 1.25rem; text-align: center; }
+
+      /* metrics mobile */
+      .metrics-section { padding: 3rem 1.25rem; }
+      .metrics-kpi-grid { grid-template-columns: 1fr 1fr; }
+      .metrics-kpi-card { padding: 1.5rem 1rem; }
+      .metrics-kpi-num { font-size: 2.4rem; }
+      .metrics-kpi-unit { font-size: 1.2rem; }
+      .metrics-kpi-label { font-size: 0.62rem; }
+      .metrics-bottom-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .disc-name { width: 100px; font-size: 0.74rem; }
+      .metrics-card { padding: 1.5rem 1.25rem; }
+      .cta-image-wrap { height: 240px; }
     }
+
+    /* ── METRICS SECTION ── */
+    .metrics-section { padding: 5rem 3.5rem; background: var(--cream-dark); }
+    .metrics-kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5px; background: rgba(11,31,58,0.1); border: 1.5px solid rgba(11,31,58,0.1); margin-bottom: 2.5rem; }
+    .metrics-kpi-card { padding: 2.5rem 1.5rem; text-align: center; }
+    .metrics-kpi-dark { background: var(--navy); }
+    .metrics-kpi-light { background: var(--white); }
+    .metrics-kpi-num { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 600; line-height: 1; }
+    .metrics-kpi-unit { font-size: 1.6rem; font-weight: 400; }
+    .metrics-kpi-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; color: var(--text-muted); }
+    .metrics-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .metrics-right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    .metrics-card { background: var(--white); border: 1px solid rgba(11,31,58,0.1); padding: 2rem; }
+    .metrics-card-navy { background: var(--navy); border-color: rgba(201,168,76,0.15); }
+    .metrics-card-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .metrics-card-label::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    .funnel-rows { display: flex; flex-direction: column; gap: 0.65rem; }
+    .funnel-row-top { display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: 0.82rem; color: var(--text-muted); font-weight: 400; }
+    .funnel-row-top span:last-child { font-weight: 500; color: var(--navy); }
+    .funnel-bar-bg { height: 8px; background: rgba(11,31,58,0.07); overflow: hidden; }
+    .funnel-bar { height: 100%; }
+    .metrics-note { font-size: 0.77rem; color: var(--text-muted); margin-top: 1.25rem; font-weight: 300; line-height: 1.6; border-top: 1px solid rgba(11,31,58,0.08); padding-top: 1rem; }
+    .discipline-bars { display: flex; flex-direction: column; gap: 0.85rem; }
+    .disc-row { display: flex; align-items: center; gap: 0.75rem; }
+    .disc-name { font-size: 0.78rem; color: var(--text-muted); width: 120px; flex-shrink: 0; }
+    .disc-bar-bg { flex: 1; height: 6px; background: rgba(11,31,58,0.07); overflow: hidden; }
+    .disc-bar { height: 100%; }
+    .disc-pct { font-size: 0.75rem; font-weight: 500; color: var(--navy); width: 30px; text-align: right; flex-shrink: 0; }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .tl-dot-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); margin-top: 3px; }
+    .tl-line { width: 1px; height: 28px; background: rgba(201,168,76,0.25); }
+    .tl-day { font-size: 0.68rem; color: var(--gold); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tl-desc { font-size: 0.82rem; color: rgba(255,255,255,0.72); font-weight: 300; margin-bottom: 0.75rem; }
+
+    /* cta image */
+    .cta-image-wrap { height: 420px; overflow: hidden; position: relative; }
+    .cta-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cta-image-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(11,31,58,0.55); }
   </style>
 </head>
 <body>
@@ -435,6 +487,11 @@
     </div>
   </div>
 
+  <div style="height:420px; overflow:hidden; position:relative;">
+    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80&fit=crop" alt="Modern insurance office team" style="width:100%; height:100%; object-fit:cover; display:block;" />
+    <div style="position:absolute; inset:0; background:rgba(11,31,58,0.55);"></div>
+  </div>
+
   <section class="section section-navy" style="text-align:center; padding: 5rem 3.5rem;">
     <p class="label" style="justify-content:center;">Ready to Build Your Team?</p>
     <h2 class="section-title section-title-light" style="margin-bottom:1rem;">Let's find your<br>next great hire.</h2>
@@ -585,163 +642,85 @@
   </div>
 
   <!-- PIPELINE METRICS SECTION -->
-  <section class="section section-alt" style="padding: 5rem 3.5rem;">
-    <p class="label" style="justify-content: center; margin-bottom: 0.75rem;">Our Track Record</p>
-    <h2 class="section-title" style="text-align:center; margin-bottom: 0.75rem;">Numbers that speak<br>for themselves.</h2>
-    <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); font-weight:300; margin-bottom:3.5rem;">Across every search we run, from first outreach to signed offer.</p>
+  <section class="metrics-section">
+    <p class="label" style="justify-content:center; margin-bottom:0.75rem;">Our Track Record</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:0.75rem;">Numbers that speak<br>for themselves.</h2>
+    <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); font-weight:300; margin-bottom:3rem;">Across every search we run, from first outreach to signed offer.</p>
 
     <!-- BIG METRICS ROW -->
-    <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:1.5px; background:rgba(11,31,58,0.1); border:1.5px solid rgba(11,31,58,0.1); margin-bottom:3rem;">
-      <div style="background:var(--navy); padding:2.5rem 2rem; text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">97<span style="font-size:1.8rem;">%</span></div>
-        <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.5rem;">Offer Acceptance Rate</div>
+    <div class="metrics-kpi-grid">
+      <div class="metrics-kpi-card metrics-kpi-dark">
+        <div class="metrics-kpi-num" style="color:var(--gold);">97<span class="metrics-kpi-unit">%</span></div>
+        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.55);">Offer Acceptance Rate</div>
       </div>
-      <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; border-right:1.5px solid rgba(11,31,58,0.08);">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">7<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">d</span></div>
-          <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Days to First Qualified Candidate</div>
+      <div class="metrics-kpi-card metrics-kpi-light">
+        <div class="metrics-kpi-num" style="color:var(--navy);">7<span class="metrics-kpi-unit" style="color:var(--text-muted);">d</span></div>
+        <div class="metrics-kpi-label">Days to First Qualified Candidate</div>
       </div>
-      <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; border-right:1.5px solid rgba(11,31,58,0.08);">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--navy); line-height:1;">21<span style="font-size:1.4rem; font-weight:400; color:var(--text-muted)">d</span></div>
-          <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:0.5rem;">Avg. Days to Signed Offer</div>
+      <div class="metrics-kpi-card metrics-kpi-light">
+        <div class="metrics-kpi-num" style="color:var(--navy);">21<span class="metrics-kpi-unit" style="color:var(--text-muted);">d</span></div>
+        <div class="metrics-kpi-label">Avg. Days to Signed Offer</div>
       </div>
-      <div style="background:var(--navy); padding:2.5rem 2rem; text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--gold); line-height:1;">96<span style="font-size:1.8rem;">%</span></div>
-        <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.5rem;">12-Month Retention Rate</div>
+      <div class="metrics-kpi-card metrics-kpi-dark">
+        <div class="metrics-kpi-num" style="color:var(--gold);">96<span class="metrics-kpi-unit">%</span></div>
+        <div class="metrics-kpi-label" style="color:rgba(255,255,255,0.55);">12-Month Retention Rate</div>
       </div>
     </div>
 
     <!-- FUNNEL + BREAKDOWN -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+    <div class="metrics-bottom-grid">
 
       <!-- FUNNEL -->
-      <div style="background:var(--white); border:1px solid rgba(11,31,58,0.1); padding:2.5rem;">
-        <div style="font-size:0.72rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1.75rem; display:flex; align-items:center; gap:0.5rem;"><span style="display:block;width:20px;height:1px;background:var(--gold);"></span>Avg. Recruiting Funnel Per Search</div>
-        <div style="display:flex; flex-direction:column; gap:0.6rem;">
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-              <span style="font-size:0.82rem; color:var(--text-muted); font-weight:400;">Candidates Sourced</span>
-              <span style="font-size:0.82rem; font-weight:500; color:var(--navy);">120+</span>
-            </div>
-            <div style="height:8px; background:rgba(11,31,58,0.07); border-radius:0; overflow:hidden;">
-              <div style="height:100%; width:100%; background:var(--navy);"></div>
-            </div>
+      <div class="metrics-card">
+        <div class="metrics-card-label">Avg. Recruiting Funnel Per Search</div>
+        <div class="funnel-rows">
+          <div class="funnel-row">
+            <div class="funnel-row-top"><span>Candidates Sourced</span><span>120+</span></div>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:100%; background:var(--navy);"></div></div>
           </div>
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-              <span style="font-size:0.82rem; color:var(--text-muted); font-weight:400;">Outreach Contacts Made</span>
-              <span style="font-size:0.82rem; font-weight:500; color:var(--navy);">85</span>
-            </div>
-            <div style="height:8px; background:rgba(11,31,58,0.07); overflow:hidden;">
-              <div style="height:100%; width:70%; background:var(--navy); opacity:0.8;"></div>
-            </div>
+          <div class="funnel-row">
+            <div class="funnel-row-top"><span>Outreach Contacts Made</span><span>85</span></div>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:70%; background:var(--navy); opacity:0.75;"></div></div>
           </div>
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-              <span style="font-size:0.82rem; color:var(--text-muted); font-weight:400;">Qualified Interviews</span>
-              <span style="font-size:0.82rem; font-weight:500; color:var(--navy);">22</span>
-            </div>
-            <div style="height:8px; background:rgba(11,31,58,0.07); overflow:hidden;">
-              <div style="height:100%; width:18%; background:var(--gold);"></div>
-            </div>
+          <div class="funnel-row">
+            <div class="funnel-row-top"><span>Qualified Interviews</span><span>22</span></div>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:18%; background:var(--gold);"></div></div>
           </div>
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-              <span style="font-size:0.82rem; color:var(--text-muted); font-weight:400;">Candidates Presented to Client</span>
-              <span style="font-size:0.82rem; font-weight:500; color:var(--navy);">3–5</span>
-            </div>
-            <div style="height:8px; background:rgba(11,31,58,0.07); overflow:hidden;">
-              <div style="height:100%; width:4%; background:var(--gold);"></div>
-            </div>
+          <div class="funnel-row">
+            <div class="funnel-row-top"><span>Candidates Presented</span><span>3–5</span></div>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:4%; background:var(--gold);"></div></div>
           </div>
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-              <span style="font-size:0.82rem; color:var(--text-muted); font-weight:400;">Offer Extended & Accepted</span>
-              <span style="font-size:0.82rem; font-weight:500; color:var(--navy);">1</span>
-            </div>
-            <div style="height:8px; background:rgba(11,31,58,0.07); overflow:hidden;">
-              <div style="height:100%; width:1%; background:var(--gold);"></div>
-            </div>
+          <div class="funnel-row">
+            <div class="funnel-row-top"><span>Offer Accepted</span><span>1</span></div>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:1%; background:var(--gold);"></div></div>
           </div>
         </div>
-        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:1.5rem; font-weight:300; line-height:1.6; border-top:1px solid rgba(11,31,58,0.08); padding-top:1rem;">Only the top 3–5 candidates from a pool of 120+ reach your desk — fully vetted and briefed. Industry average time-to-fill: 54 days. Ours: 21.</p>
+        <p class="metrics-note">Only the top 3–5 candidates from a pool of 120+ reach your desk — fully vetted and briefed. Industry avg. time-to-fill: 54 days. Ours: 21.</p>
       </div>
 
-      <!-- BREAKDOWN BY DISCIPLINE + TIMELINE -->
-      <div style="display:flex; flex-direction:column; gap:1.5px;">
+      <!-- RIGHT COL -->
+      <div class="metrics-right-col">
 
         <!-- DISCIPLINE MIX -->
-        <div style="background:var(--white); border:1px solid rgba(11,31,58,0.1); padding:2.5rem;">
-          <div style="font-size:0.72rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;"><span style="display:block;width:20px;height:1px;background:var(--gold);"></span>Placements by Discipline</div>
-          <div style="display:flex; flex-direction:column; gap:0.85rem;">
-            <div style="display:flex; align-items:center; gap:0.85rem;">
-              <span style="font-size:0.8rem; color:var(--text-muted); width:140px; flex-shrink:0;">Sales & Producers</span>
-              <div style="flex:1; height:6px; background:rgba(11,31,58,0.07);">
-                <div style="height:100%; width:38%; background:var(--navy);"></div>
-              </div>
-              <span style="font-size:0.78rem; font-weight:500; color:var(--navy); width:32px; text-align:right;">38%</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.85rem;">
-              <span style="font-size:0.8rem; color:var(--text-muted); width:140px; flex-shrink:0;">Underwriting</span>
-              <div style="flex:1; height:6px; background:rgba(11,31,58,0.07);">
-                <div style="height:100%; width:22%; background:var(--navy); opacity:0.75;"></div>
-              </div>
-              <span style="font-size:0.78rem; font-weight:500; color:var(--navy); width:32px; text-align:right;">22%</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.85rem;">
-              <span style="font-size:0.8rem; color:var(--text-muted); width:140px; flex-shrink:0;">Executive Search</span>
-              <div style="flex:1; height:6px; background:rgba(11,31,58,0.07);">
-                <div style="height:100%; width:18%; background:var(--gold);"></div>
-              </div>
-              <span style="font-size:0.78rem; font-weight:500; color:var(--navy); width:32px; text-align:right;">18%</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.85rem;">
-              <span style="font-size:0.8rem; color:var(--text-muted); width:140px; flex-shrink:0;">Claims</span>
-              <div style="flex:1; height:6px; background:rgba(11,31,58,0.07);">
-                <div style="height:100%; width:12%; background:var(--gold); opacity:0.7;"></div>
-              </div>
-              <span style="font-size:0.78rem; font-weight:500; color:var(--navy); width:32px; text-align:right;">12%</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.85rem;">
-              <span style="font-size:0.8rem; color:var(--text-muted); width:140px; flex-shrink:0;">Other</span>
-              <div style="flex:1; height:6px; background:rgba(11,31,58,0.07);">
-                <div style="height:100%; width:10%; background:rgba(11,31,58,0.25);"></div>
-              </div>
-              <span style="font-size:0.78rem; font-weight:500; color:var(--navy); width:32px; text-align:right;">10%</span>
-            </div>
+        <div class="metrics-card">
+          <div class="metrics-card-label">Placements by Discipline</div>
+          <div class="discipline-bars">
+            <div class="disc-row"><span class="disc-name">Sales & Producers</span><div class="disc-bar-bg"><div class="disc-bar" style="width:38%; background:var(--navy);"></div></div><span class="disc-pct">38%</span></div>
+            <div class="disc-row"><span class="disc-name">Underwriting</span><div class="disc-bar-bg"><div class="disc-bar" style="width:22%; background:var(--navy); opacity:0.75;"></div></div><span class="disc-pct">22%</span></div>
+            <div class="disc-row"><span class="disc-name">Executive Search</span><div class="disc-bar-bg"><div class="disc-bar" style="width:18%; background:var(--gold);"></div></div><span class="disc-pct">18%</span></div>
+            <div class="disc-row"><span class="disc-name">Claims</span><div class="disc-bar-bg"><div class="disc-bar" style="width:12%; background:var(--gold); opacity:0.7;"></div></div><span class="disc-pct">12%</span></div>
+            <div class="disc-row"><span class="disc-name">Other</span><div class="disc-bar-bg"><div class="disc-bar" style="width:10%; background:rgba(11,31,58,0.25);"></div></div><span class="disc-pct">10%</span></div>
           </div>
         </div>
 
         <!-- TIMELINE -->
-        <div style="background:var(--navy); border:1px solid rgba(201,168,76,0.15); padding:2.5rem;">
-          <div style="font-size:0.72rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;"><span style="display:block;width:20px;height:1px;background:var(--gold);"></span>Typical Search Timeline</div>
-          <div style="display:flex; flex-direction:column; gap:1rem;">
-            <div style="display:flex; align-items:flex-start; gap:1rem;">
-              <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
-                <div style="width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:3px;"></div>
-                <div style="width:1px; height:28px; background:rgba(201,168,76,0.25);"></div>
-              </div>
-              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 1</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">Discovery call & role brief</div></div>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:1rem;">
-              <div style="display:flex; flex-direction:column; align-items:center;">
-                <div style="width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:3px;"></div>
-                <div style="width:1px; height:28px; background:rgba(201,168,76,0.25);"></div>
-              </div>
-              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 3–7</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">Active sourcing & outreach begins</div></div>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:1rem;">
-              <div style="display:flex; flex-direction:column; align-items:center;">
-                <div style="width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:3px;"></div>
-                <div style="width:1px; height:28px; background:rgba(201,168,76,0.25);"></div>
-              </div>
-              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 5–7</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">First qualified candidates presented</div></div>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:1rem;">
-              <div style="display:flex; flex-direction:column; align-items:center;">
-                <div style="width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:3px;"></div>
-              </div>
-              <div><div style="font-size:0.72rem; color:var(--gold); font-weight:500; letter-spacing:0.08em;">DAY 30–45</div><div style="font-size:0.84rem; color:rgba(255,255,255,0.75); font-weight:300;">Offer extended & accepted</div></div>
-            </div>
+        <div class="metrics-card metrics-card-navy">
+          <div class="metrics-card-label" style="color:var(--gold);">Typical Search Timeline</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 1</div><div class="tl-desc">Discovery call &amp; role brief</div></div></div>
+            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 2–4</div><div class="tl-desc">Active sourcing &amp; outreach begins</div></div></div>
+            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-day">Day 5–7</div><div class="tl-desc">First qualified candidates presented</div></div></div>
+            <div class="tl-item"><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div><div class="tl-day">Day 14–21</div><div class="tl-desc">Offer extended &amp; accepted</div></div></div>
           </div>
         </div>
 
